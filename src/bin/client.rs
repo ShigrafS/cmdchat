@@ -42,6 +42,7 @@ fn main() -> io::Result<()> {
 
     // Reading thread
     let running_clone = running.clone();
+    let name_clone = name.clone();
     thread::spawn(move || {
         let mut reader = BufReader::new(read_stream);
         let mut buffer = String::new();
@@ -53,7 +54,14 @@ fn main() -> io::Result<()> {
                     std::process::exit(0);
                 }
                 Ok(_) => {
-                    print!("{}", buffer);
+                    let msg = buffer.trim_end();
+                    // Replace user's own name with "You" if echoed back
+                    if msg.starts_with(&name_clone) {
+                        let rest = &msg[name_clone.len()..];
+                        print!("\rYou:{}\nYou: ", rest);
+                    } else {
+                        print!("\r{}\nYou: ", msg);
+                    }
                     io::stdout().flush().unwrap();
                 }
                 Err(e) => {
@@ -77,7 +85,6 @@ fn main() -> io::Result<()> {
             break;
         }
 
-        // Make sure the message ends with '\n' so the server and other clients can read lines
         let message = format!("{}: {}", name, input);
         if let Err(e) = writer.write_all(message.as_bytes()) {
             eprintln!("Error sending message: {}", e);

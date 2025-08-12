@@ -36,21 +36,72 @@ This project demonstrates how to build a robust, real-time networked application
 
 ---
 
-## 🧑‍💻 Getting Started
 
-### 1. ✅ Requirements
+## 🧑‍💻 Getting Started — Clone & Run Locally
 
-- Rust (stable): [Install here](https://www.rust-lang.org/tools/install)
+Follow these simple steps to get the chat server and client running on your local machine:
 
-### 2. 🔧 Setup
+### 1. Clone the repository
 
-Clone the repo and build:
+Open your terminal and run:
 
 ```bash
-git clone https://github.com/your-username/chat-app
+git clone https://github.com/your-username/chat-app.git
 cd chat-app
+```
+
+*(Replace `your-username` with the actual GitHub username or your repo URL)*
+
+### 2. Build the project
+
+Compile both server and client binaries using Cargo:
+
+```bash
 cargo build --release
-````
+```
+
+### 3. Run the server
+
+Start the chat server on port 8080:
+
+```bash
+cargo run --bin server
+```
+
+You should see:
+
+```
+Server listening on port 8080 (max 10 clients)...
+```
+
+### 4. Run one or more clients
+
+In separate terminal windows or tabs, run the client to connect to the server:
+
+```bash
+cargo run --bin client 127.0.0.1 8080
+```
+
+You will be prompted to enter your name. Once connected, start typing messages and chat with other connected clients in real-time.
+
+---
+
+### Quick Local Test Example
+
+Open multiple terminal windows and run:
+
+```bash
+# Terminal 1: Run server
+cargo run --bin server
+
+# Terminal 2: Run client (Alice)
+cargo run --bin client 127.0.0.1 8080
+
+# Terminal 3: Run client (Bob)
+cargo run --bin client 127.0.0.1 8080
+```
+
+Now Alice and Bob can chat live!
 
 ---
 

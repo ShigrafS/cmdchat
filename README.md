@@ -8,34 +8,32 @@ This project demonstrates how to build a robust, real-time networked application
 
 ## 🚀 Features
 
-- 📡 **Multi-client TCP server** (listens on `0.0.0.0:8080`)
-- 🧠 **Per-client threads** with message broadcasting
-- 🙋‍♂️ **Named users** — set your name on connection
-- 🧼 **Auto-removal of disconnected clients**
-- 🔍 **Client hostname resolution**
-- ⚙️ **Configurable connection backlog**
-- 🚫 **Enforced client limit** (default: 10)
-- 🧵 **Threaded architecture** for simplicity and reliability
-- 💬 **Full-duplex messaging** between clients
-- ✅ Cross-platform (Linux, macOS, Windows)
+* 📡 **Multi-client TCP server** (listens on `0.0.0.0:8080`)
+* 🧠 **Per-client threads** with message broadcasting
+* 🙋‍♂️ **Named users** — set your name on connection
+* 🧼 **Auto-removal of disconnected clients**
+* 🔍 **Client hostname resolution**
+* ⚙️ **Configurable connection backlog**
+* 🚫 **Enforced client limit** (default: 10)
+* 🧵 **Threaded architecture** for simplicity and reliability
+* 💬 **Full-duplex messaging** between clients
+* 🎨 **Terminal colors support** — names and messages show up vibrantly
+* ✅ Cross-platform (Linux, macOS, Windows)
 
 ---
 
 ## 🏗️ Project Structure
 
 ```
-
 /chat-app
 ├── Cargo.toml
 └── src
-└── bin
-├── server.rs  # TCP server implementation
-└── client.rs  # TCP client implementation
-
-````
+    └── bin
+        ├── server.rs  # TCP server implementation
+        └── client.rs  # TCP client implementation
+```
 
 ---
-
 
 ## 🧑‍💻 Getting Started — Clone & Run Locally
 
@@ -144,6 +142,11 @@ cargo run --bin client 127.0.0.1 8080
 * Enter your name when prompted
 * Start typing and press Enter to send messages
 * Displays broadcast messages from all other clients
+* Supports terminal **colors** — names and messages show vibrantly
+* Slash commands supported:
+
+  * `/name NEWNAME` — change your display name on the fly
+  * `/quit` or `/exit` — gracefully leave the chat
 * Gracefully handles server disconnection
 
 ### Sample Chat:
@@ -222,10 +225,10 @@ These features can be added if desired — let us know if you're interested!
 
 ## ✨ Future Enhancements (Optional)
 
-* [ ] Add message timestamps
-* [ ] Use colors in terminal (e.g. `crossterm`)
+* [x] Add message timestamps
+* [x] Use colors in terminal (via `colored` crate)
+* [x] Slash commands support (`/name`, `/quit`, `/exit`)
 * [ ] Chat history logging
-* [ ] Slash commands (e.g. `/name`, `/quit`)
 * [ ] Async version with `tokio`
 * [ ] TLS encryption (`rustls`)
 
@@ -248,4 +251,3 @@ This project is licensed under the MIT License. See [LICENSE](LICENSE) for detai
 Start a local server, invite friends, and chat in seconds — no browser, no bloat, no distractions.
 
 ---
-

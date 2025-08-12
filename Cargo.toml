@@ -4,3 +4,6 @@ version = "0.1.0"
 edition = "2024"
 
 [dependencies]
+dns-lookup = "2.1.0"
+socket2 = "0.6.0"
+ctrlc = "3"
